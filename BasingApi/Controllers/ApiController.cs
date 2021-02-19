@@ -11,7 +11,7 @@ namespace BasingApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BasingController : ControllerBase
+    public class ApiController : ControllerBase
     {
     
         /// <summary>

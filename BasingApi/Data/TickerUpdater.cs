@@ -189,7 +189,7 @@ namespace BasingApi.Data
             {
                 jsonData = JsonConvert.DeserializeObject<HistoricalData>(response.Content);
             }
-            catch (Exception e)
+            catch
             {
                 Console.WriteLine("Unable to fetch " + ticker);
                 return null;
