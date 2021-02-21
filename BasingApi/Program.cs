@@ -24,7 +24,7 @@ namespace BasingApi
                 {
                     TickerUpdater.UpdateData();
                     
-                    Thread.Sleep(30 * 1000);
+                    Thread.Sleep(60 * 1000);
                 }
 
             }).Start();
@@ -37,7 +37,7 @@ namespace BasingApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://*:80");
+                    webBuilder.UseUrls("http://*:8080");
                 });
     }
 }

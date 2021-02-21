@@ -20,7 +20,6 @@ namespace BasingApi.Data
         private static string _Period = "1mo";
         private static float _Range = 0.05f;
         private const float _VOLUMESPIKECAP = 0.05f;
-        private static Dictionary<string, HistoricalData> _Hist = new Dictionary<string, HistoricalData>();
         private static Dictionary<string, TickerData> _Basing = new Dictionary<string, TickerData>();
         private static Dictionary<string, int> _PreviousVolume = new Dictionary<string, int>();
         private static bool _GottenNewData = false;
@@ -85,8 +84,6 @@ namespace BasingApi.Data
                 if (histData != null)
                 {
                     tData = ProcessHistDataByTicker(histData, ticker);
-                        
-                    _Hist[ticker] = (histData);
                 }
                     
                 if (tData != null)
