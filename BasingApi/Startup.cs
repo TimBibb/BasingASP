@@ -43,6 +43,8 @@ namespace BasingApi
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BasingApi v1"));
             }
 
+            app.UseStaticFiles();
+            
             app.UseRouting();
 
             app.UseAuthorization();
