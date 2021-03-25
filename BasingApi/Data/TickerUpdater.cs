@@ -30,6 +30,13 @@ namespace BasingApi.Data
             TimeSpan end = new TimeSpan(23, 30, 0); // 5:00pm
             TimeSpan now = DateTime.UtcNow.TimeOfDay;
             Console.WriteLine(now.ToString());
+
+            if (!File.Exists(_TkPath))
+            {
+                Console.WriteLine("Could not find token file: " + _TkPath);
+                return;
+            }
+                
             
             if ((now > start) && (now < end))
             {
@@ -96,9 +103,18 @@ namespace BasingApi.Data
             // Save data to a file so it can be archived / cached for later use
             File.WriteAllText(_CachedDataFile, JsonConvert.SerializeObject(_Basing));
         }
-        private static InstantData DownloadIEXInstant(TickerData tickerData)
-        {
-            string token = File.ReadAllText(_TkPath).Replace("\n", "");
+        private static InstantData DownloadIEXInstant(TickerData tickerData) {
+            string token;
+            try
+            {
+                 token = File.ReadAllText(_TkPath).Replace("\n", "");
+            }
+            catch (FileNotFoundException e) {
+                Console.WriteLine("Could not find " + _TkPath);
+                Console.WriteLine(e.Message);
+                return null;
+            }
+           
             InstantData jsonData = null;
             
             if (tickerData == null)
